@@ -2,7 +2,7 @@
 #define _REMOTE_JOY_H_
 
 #define HOSTFSDRIVER_PID		(0x1C9)
-#define SONY_VID				(0x54C)
+#define SONY_VID				(0x6472)
 
 #define HOSTFS_MAX_BLOCK		(64*1024)
 #define HOSTFS_BULK_MAXWRITE	(1024*1024)
