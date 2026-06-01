@@ -26,7 +26,7 @@ jobs:
 
     - name: Install Windows SDK, WDK and libusb-win32
       run: |
-        dotnet add package Microsoft.Windows.SDK.BuildTools Microsoft.Windows.WDK.x64
+        dotnet add package Microsoft.Windows.SDK.BuildTools
         dotnet add package Microsoft.Windows.WDK.x64
         dotnet add package libusb-win32-driver
     
