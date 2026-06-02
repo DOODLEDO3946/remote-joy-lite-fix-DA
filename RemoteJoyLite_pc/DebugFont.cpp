@@ -143,7 +143,7 @@ BOOL DebugFontInit( AkindD3D *pAkindD3D )
 /*------------------------------------------------------------------------------*/
 void DebugFontExit( void )
 {
-	pD3DTex = NULL;
+	pD3DTex.Reset();
 }
 
 /*------------------------------------------------------------------------------*/
@@ -153,7 +153,7 @@ void DebugFontDraw( AkindD3D *pAkindD3D )
 {
 	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice().Get();
 
-	pD3DDev->SetTexture( 0, pD3DTex );
+	pD3DDev->SetTexture( 0, pD3DTex.Get() );
 	pD3DDev->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
 	pD3DDev->SetRenderState( D3DRS_SRCBLEND, D3DBLEND_SRCALPHA );
 	pD3DDev->SetRenderState( D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA );
