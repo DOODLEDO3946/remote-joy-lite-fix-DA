@@ -78,24 +78,6 @@ jobs:
         make clean
         cd ..
 
-    - name: Build PC aarch64 JA
-      run: |
-        mkdir aarch64
-        cd RemoteJoyLite_pc
-        make ARCH=aarch64 CPPC=aarch64-w64-mingw32-g++ WINDRES=aarch64-w64-mingw32-windres LANGUAGE=LANG_JA
-        mv RemoteJoyLite.exe ../aarch64/RemoteJoyLite_JA_aarch64.exe
-        cp libusb0_aarch64.dll ../aarch64/libusb0.dll
-        make clean
-        cd ..
-
-    - name: Build PC aarch64 EN
-      run: |
-        cd RemoteJoyLite_pc
-        make ARCH=aarch64 CPPC=aarch64-w64-mingw32-g++ WINDRES=aarch64-w64-mingw32-windres LANGUAGE=LANG_EN
-        mv RemoteJoyLite.exe ../aarch64/RemoteJoyLite_EN_aarch64.exe
-        make clean
-        cd ..
-
     - name: Push package artifact
       uses: actions/upload-artifact@v4
       with:
@@ -105,8 +87,6 @@ jobs:
           x86/RemoteJoyLite_EN_32.exe
           x64/RemoteJoyLite_JA_64.exe
           x64/RemoteJoyLite_EN_64.exe
-          aarch64/RemoteJoyLite_JA_aarch64.exe
-          aarch64/RemoteJoyLite_EN_aarch64.exe
           x86/libusb0.dll
           x64/libusb0.dll
           aarch64/libusb0.dll
