@@ -210,7 +210,7 @@ static bool IsMouseShowing() {
 void ChangeZoomMax( HWND hWnd );
 static void MainSync( HWND hWnd )
 {
-	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice();
+	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice().Get();
 
 	RECT SrcRect = { 0, 0, SCREEN_W, SCREEN_H };
 	RECT DesRect = { 0, 0, SCREEN_W, SCREEN_H };
@@ -599,7 +599,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPreInst, LPSTR lpszCmdLine, 
 /*------------------------------------------------------------------------------*/
 void ChangeAspect( void )
 {
-	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice();
+	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice().Get();
 	pD3DDev->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0,0,0), 1.0, 0 );
 	pD3DDev->Present( NULL, NULL, NULL, NULL );
 }
