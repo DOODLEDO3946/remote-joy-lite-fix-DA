@@ -1,4 +1,4 @@
-#include <windows.h>
+#include "dxerr.h"
 
 const WCHAR* DXGetErrorStringW(HRESULT hr) {
     static WCHAR message[16];

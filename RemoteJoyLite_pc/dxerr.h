@@ -1,3 +1,5 @@
+#include <windows.h>
+
 const WCHAR* DXGetErrorStringW(HRESULT hr);
 const CHAR* DXGetErrorStringA(HRESULT hr);
 
