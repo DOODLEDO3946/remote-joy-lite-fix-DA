@@ -1,5 +1,5 @@
 #include <windows.h>
-#include <atlbase.h>
+// #include <atlbase.h>
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <dxerr.h>
