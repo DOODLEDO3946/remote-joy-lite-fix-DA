@@ -30,7 +30,7 @@ public:
 	// Resets the display mode. Recreates the direct3d device if monitor was changed.
 	void reset( bool fullScreen );
 	// Returns the direct3d object.
-	IDirect3DDevice9 *getDevice( void ) const;
+	Microsoft::WRL::ComPtr<IDirect3DDevice9> getDevice( void ) const;
 	// Adds a create event handler. This event handler is called after
 	// create() is called and after the device is created.
 	void addCreateEventHandler(CREATE_EVENT_HANDLER createEventHandler);

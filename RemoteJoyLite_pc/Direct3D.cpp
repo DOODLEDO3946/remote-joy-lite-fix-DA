@@ -80,7 +80,7 @@ void AkindD3D::release() {
 	device.Reset();
 }
 
-Microsoft::WRL::ComPtr<IDirect3DDevice9> *AkindD3D::getDevice( void ) const {
+Microsoft::WRL::ComPtr<IDirect3DDevice9> AkindD3D::getDevice( void ) const {
 	return device;
 }
 
