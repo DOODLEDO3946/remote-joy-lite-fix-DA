@@ -7,12 +7,12 @@ class ImageFilterSpline36 : public ImageFilterPixelShaderBase {
 public:
 	ImageFilterSpline36();
 	virtual ~ImageFilterSpline36();
-	virtual const CComPtr<IDirect3DPixelShader9>& getPixelShaderCache();
-	virtual void setPixelShaderCache(const CComPtr<IDirect3DPixelShader9>& pixelShader);
+	virtual const Microsoft::WRL::ComPtr<IDirect3DPixelShader9>& getPixelShaderCache();
+	virtual void setPixelShaderCache(const Microsoft::WRL::ComPtr<IDirect3DPixelShader9>& pixelShader);
 	static void release();
 
 private:
-	static CComPtr<IDirect3DPixelShader9> pixelShaderCache;
+	static Microsoft::WRL::ComPtr<IDirect3DPixelShader9> pixelShaderCache;
 };
 
 #endif
