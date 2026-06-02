@@ -23,7 +23,7 @@ $(TARGET) : $(OBJS)
 	$(CPPC) $(CFLAGS) -c $*.cpp
 
 .rc.res:
-	$(WINDRES) $(RCFLAGS) $*.rc -o $*.rc
+	$(WINDRES) $(RCFLAGS) $*.rc -o $*.res
 
 clean: 
 	@rm -rf *.exe *.o *.res *~
