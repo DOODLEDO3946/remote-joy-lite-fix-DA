@@ -1,7 +1,7 @@
 #ifndef IMAGE_FILTER_PIXEL_SHADER_BASE_H
 #define IMAGE_FILTER_PIXEL_SHADER_BASE_H
 
-#include <atlbase.h>
+// #include <atlbase.h>
 #include <d3d9.h>
 #include "ImageFilter.h"
 
