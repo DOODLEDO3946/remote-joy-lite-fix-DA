@@ -20,9 +20,19 @@ void ImageFilterPixelShaderBase::set(IDirect3DDevice9* device) {
 		D3DXMACRO macros[1] = {0};
 		HRESULT result = NULL;
 
+		// if (FAILED(result = D3DXCompileShader(pixelShaderCode, strlen(pixelShaderCode), macros, NULL,
+		// 	"process", "ps_3_0", D3DXSHADER_PREFER_FLOW_CONTROL, &buffer, &errorMessage, NULL))) {
+		// 	showError(result, (const char*)buffer->GetBufferPointer());
+		// 	return;
+		// }
+
 		if (FAILED(result = D3DXCompileShader(pixelShaderCode, strlen(pixelShaderCode), macros, NULL,
 			"process", "ps_3_0", D3DXSHADER_PREFER_FLOW_CONTROL, &buffer, &errorMessage, NULL))) {
-			showError(result, (const char*)buffer->GetBufferPointer());
+			const char* msg = errorMessage
+				? (const char*)errorMessage->GetBufferPointer()
+				: "Shader compilation failed";
+
+			showError(result, msg);
 			return;
 		}
 
