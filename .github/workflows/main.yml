@@ -50,6 +50,7 @@ jobs:
         mv RemoteJoyLite.exe ../x86/RemoteJoyLite_JA_32.exe
         cp libusb0_x86.dll ../x86/libusb0.dll
         cp d3dx9_43_x86.dll ../x86/d3dx9_43.dll
+        cp D3DCompiler_43_x86.dll ../x86/D3DCompiler_43.dll
         make clean
         cd ..
 
@@ -69,6 +70,7 @@ jobs:
         mv RemoteJoyLite.exe ../x64/RemoteJoyLite_JA_64.exe
         cp libusb0_x64.dll ../x64/libusb0.dll
         cp d3dx9_43_x64.dll ../x64/d3dx9_43.dll
+        cp D3DCompiler_43_x64.dll ../x64/D3DCompiler_43.dll
         make clean
         cd ..
 
@@ -91,8 +93,10 @@ jobs:
           x64/RemoteJoyLite_EN_64.exe
           x86/libusb0.dll
           x86/d3dx9_43.dll
+          x86/D3DCompiler_43.dll
           x64/libusb0.dll
           x64/d3dx9_43.dll
+          x64/D3DCompiler_43.dll
           psp/RemoteJoyLite.prx
           psp/RemoteJoyLiteDebug.prx
         if-no-files-found: error
