@@ -804,7 +804,7 @@ void RemoteJoyLiteExit( void )
 	while (!UsbhostfsExited) {
 		Sleep( 10 );
 	}
-	pD3DTex = NULL;
+	pD3DTex.Reset();
 }
 
 /*------------------------------------------------------------------------------*/
