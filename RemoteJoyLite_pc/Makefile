@@ -1,29 +1,40 @@
 TARGET   = RemoteJoyLite.exe
-MAIN_OBJ = WinMain.obj RemoteJoyLite.res RemoteJoyLite.obj Direct3D.obj DirectInput.obj DebugFont.obj FontData_5x5.obj Log.obj Deleter.obj
-CAPT_OBJ = Bitmap.obj Movie.obj Wave.obj Macro.obj
+MAIN_OBJ = WinMain.obj RemoteJoyLite.res RemoteJoyLite.o Direct3D.o DirectInput.o DebugFont.o FontData_5x5.o Log.o Deleter.o
+CAPT_OBJ = Bitmap.o Movie.o Wave.o Macro.o
 CONF_OBJ = Setting.obj Setting_Joy.obj Setting_Key.obj Setting_Etc.obj Setting_Filt.obj Setting_Capt.obj Setting_PSP.obj Setting_Macro.obj
-FILTER_OBJ = ImageFilterNearest.obj ImageFilterBilinear.obj ImageFilterPixelShaderBase.obj ImageFilterSpline36.obj Spline36.obj ImageFilterLanczos4.obj lanczos4.obj
+FILTER_OBJ = ImageFilterNearest.o ImageFilterBilinear.o ImageFilterPixelShaderBase.o ImageFilterSpline36.o Spline36.o ImageFilterLanczos4.o lanczos4.o
 OBJS     = $(MAIN_OBJ) $(CAPT_OBJ) $(CONF_OBJ) $(FILTER_OBJ)
-LIBS     = d3d9.lib d3dx9.lib dinput8.lib dxguid.lib dxerr.lib libusb.lib vfw32.lib winmm.lib user32.lib gdi32.lib advapi32.lib
-LANGUAGE =  LANG_JA
-#LANGUAGE =  LANG_EN
-CFLAGS   = /O2 /GL /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_UNICODE" /D "UNICODE" /DLANGUAGE=$(LANGUAGE) /DDIRECTINPUT_VERSION=0x0800 /I "$(DXSDKPATH)Include" /I "$(WINDDKPATH)inc" /I "$(WINDDKPATH)inc\atl71" /I "..\..\libusb-win32-bin-1.2.6.0\include"
-LDFLAGS  = /LTCG /LIBPATH:"$(DXSDKPATH)Lib\x86" /LIBPATH:"$(WINDDKPATH)lib\ATL\i386" /LIBPATH:"..\..\libusb-win32-bin-1.2.6.0\lib\msvc"
-RCFLAGS  =
+LIBS     = -ld3d9 -ldinput -ldxguid -lwinmm -lvfw32 -lusb0_$(ARCH) -Wl,-Bstatic -lpthread -static-libgcc -static-libstdc++
+#LANGUAGE =  LANG_JA
+LANGUAGE =  LANG_EN
+CFLAGS   = -O2 -Wall -g -DWINVER=0x0500 -DUNICODE -DLANGUAGE=$(LANGUAGE)
+LDFLAGS  = -L/usr/local/lib -L./ -mwindows
+RCFLAGS  = -O coff
 
-.SUFFIXES: .cpp .c .rc .res .obj
+.SUFFIXES: .cpp .c .rc .res .o
 
 $(TARGET) : $(OBJS)
 	link $(LDFLAGS) $(OBJS) $(LIBS) /OUT:$(TARGET)
 
-.c.obj:
-	cl $(CFLAGS) -c $*.c
+.c.o:
+	$(CC) $(CFLAGS) -c $*.c
 
-.cpp.obj:
-	cl $(CFLAGS) -c $*.cpp
+.cpp.o:
+	$(CPPC) $(CFLAGS) -c $*.cpp
 
 .rc.res:
-	rc $(RCFLAGS) $*.rc
+	$(WINDRES) $(RCFLAGS) $*.rc
 
 clean: 
-	del /F /S $(TARGET) *.obj *.res *~
+	@rm -rf *.exe *.o *.res *~
+
+strip:
+	strip $(TARGET)
+
+depend: $(OBJS:.o=.cpp)
+	-@rm depend.inc
+	-@for i in $^; do\
+		gcc $(CFLAGS) -MM $$i >> depend.inc;\
+	done
+
+-include depend.inc
