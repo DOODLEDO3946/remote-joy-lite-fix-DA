@@ -15,8 +15,8 @@ void ImageFilterPixelShaderBase::set(IDirect3DDevice9* device) {
 	// Create the pixel shader if not exist.
 	if (!getPixelShaderCache()) {
 		// Compile the pixel shader.
-		CComPtr<ID3DXBuffer> buffer;
-		CComPtr<ID3DXBuffer> errorMessage;
+		Microsoft::WRL::ComPtr<ID3DXBuffer> buffer;
+		Microsoft::WRL::ComPtr<ID3DXBuffer> errorMessage;
 		D3DXMACRO macros[1] = {0};
 		HRESULT result = NULL;
 
@@ -27,7 +27,7 @@ void ImageFilterPixelShaderBase::set(IDirect3DDevice9* device) {
 		}
 
 		// Create the pixel shader.
-		CComPtr<IDirect3DPixelShader9> pixelShader;
+		Microsoft::WRL::ComPtr<IDirect3DPixelShader9> pixelShader;
 		if (FAILED(result = device->CreatePixelShader((DWORD*)buffer->GetBufferPointer(), &pixelShader))) {
 			showError(result, NULL);
 			return;
@@ -44,7 +44,7 @@ void ImageFilterPixelShaderBase::set(IDirect3DDevice9* device) {
 		return;
 	}
 
-	CComPtr<IDirect3DSurface9> surface;
+	Microsoft::WRL::ComPtr<IDirect3DSurface9> surface;
 	if (FAILED(result = device->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &surface))) {
 		showError(result, NULL);
 		return;
