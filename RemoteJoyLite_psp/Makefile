@@ -9,7 +9,7 @@ OBJS    = RemoteJoyLite.o usb.o kmode.o exports.o debug.o hook.o hook_test.o hoo
 LIBS    = -lpspctrl_driver -lpspusb_driver -lpspusbbus_driver -lpsppower_driver -lpspdisplay_driver
 CFLAGS  = -O2 -G0 -Wall -fno-builtin-printf $(CFLAGS_EXTRA)
 ASFLAGS = $(CFLAGS)
-USE_KERNEL_LIBS = 1
+#USE_KERNEL_LIBS = 1
 
 PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build_prx.mak
