@@ -6,7 +6,7 @@
 #include <vector>
 #include <windows.h>
 #include <d3d9.h>
-// #include <atlbase.h>
+#include <wrl/client.h>
 
 class AkindD3D;
 typedef BOOL (*CREATE_EVENT_HANDLER)(AkindD3D *pAkindD3D);
@@ -42,8 +42,8 @@ public:
 
 private:
 	HWND hwnd;
-	CComPtr<IDirect3D9> object;
-	CComPtr<IDirect3DDevice9> device;
+	Microsoft::WRL::ComPtr<IDirect3D9> object;
+	Microsoft::WRL::ComPtr<IDirect3DDevice9> device;
 	int adapterIndex;
 	std::vector<CREATE_EVENT_HANDLER> createEventHandlers;
 	std::vector<RELEASE_EVENT_HANDLER> releaseEventHandlers;
