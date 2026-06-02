@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "dxerr.h"
 
 const WCHAR* DXGetErrorStringW(HRESULT hr) {
