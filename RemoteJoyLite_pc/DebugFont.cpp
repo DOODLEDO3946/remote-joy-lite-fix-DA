@@ -30,7 +30,7 @@ struct PRIM {
 static int  DFontNum = 0;
 static WORD DFontIdx[DFONT_MAX*6];
 static PRIM DFontBuf[DFONT_MAX*4];
-static CComPtr<IDirect3DTexture9> pD3DTex;
+static Microsoft::WRL::ComPtr<IDirect3DTexture9> pD3DTex;
 
 /*------------------------------------------------------------------------------*/
 /* dprint																		*/
