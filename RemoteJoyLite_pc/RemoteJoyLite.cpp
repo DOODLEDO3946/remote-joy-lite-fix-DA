@@ -18,7 +18,7 @@
 #include <dinput.h>
 #include "DxErr/src/dxerr.h"
 
-#include <lusb0_usb.h>
+#include "lusb0_usb.h"
 
 #include "Direct3D.h"
 #include "DirectInput.h"
