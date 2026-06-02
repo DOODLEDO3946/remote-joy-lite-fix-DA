@@ -1,0 +1,3 @@
+[submodule "DxErr"]
+    path = RemoteJoyLite_pc/DxErr
+    url = https://github.com/nitrocaster/DxErr
