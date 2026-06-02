@@ -14,7 +14,7 @@ RCFLAGS  = -O coff
 .SUFFIXES: .cpp .c .rc .res .o
 
 $(TARGET) : $(OBJS)
-	link $(LDFLAGS) $(OBJS) $(LIBS) /OUT:$(TARGET)
+	$(CPPC) $(OBJS) $(LDFLAGS) $(LIBS) -o $(TARGET)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $*.c
