@@ -2,7 +2,7 @@
 /* DebugFont5x5																	*/
 /*------------------------------------------------------------------------------*/
 #include <windows.h>
-#include "fontdata.h"
+#include "Fontdata.h"
 
 /*   */
 #define F20_0 FLINE_00000000
