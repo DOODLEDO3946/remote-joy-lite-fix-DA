@@ -4,7 +4,7 @@
 
 static void showError(HRESULT result, const char* message) {
 	WCHAR buffer[1024];
-	wsprintf(buffer, L"ImageFilterSpline36: %s\n%s", DXGetErrorString(result), message);
+	wsprintf(buffer, L"ImageFilterSpline36: %s\n%s", DXGetErrorStringA(result), message);
 	MessageBox(NULL, buffer, L"RemoteJoyLite", MB_OK);
 }
 
