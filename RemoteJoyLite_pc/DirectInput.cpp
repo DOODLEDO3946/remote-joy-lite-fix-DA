@@ -2,9 +2,9 @@
 /* DirectInput																	*/
 /*------------------------------------------------------------------------------*/
 #include <cstdio>
+#include "DirectInput.h"
 #include <dbt.h>
 #include <hidclass.h>
-#include "DirectInput.h"
 
 /*------------------------------------------------------------------------------*/
 /* GUID_DEVINTERFACE_HID														*/
