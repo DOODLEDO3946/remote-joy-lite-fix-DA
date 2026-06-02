@@ -23,5 +23,5 @@ void ImageFilterLanczos4::setPixelShaderCache(const Microsoft::WRL::ComPtr<IDire
 }
 
 void ImageFilterLanczos4::release() {
-	pixelShaderCache = NULL;
+	pixelShaderCache.Reset();
 }

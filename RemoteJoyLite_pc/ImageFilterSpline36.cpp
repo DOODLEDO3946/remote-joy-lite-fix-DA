@@ -23,5 +23,5 @@ void ImageFilterSpline36::setPixelShaderCache(const Microsoft::WRL::ComPtr<IDire
 }
 
 void ImageFilterSpline36::release() {
-	pixelShaderCache = NULL;
+	pixelShaderCache.Reset();
 }
