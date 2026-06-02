@@ -1,7 +1,7 @@
 #ifndef IMAGE_FILTER_LANCZOS4_H
 #define IMAGE_FILTER_LANCZOS4_H
 
-#include <atlbase.h>
+// #include <atlbase.h>
 #include "ImageFilterPixelShaderBase.h"
 
 struct IDirect3DPixelShader9;
