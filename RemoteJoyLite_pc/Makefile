@@ -6,7 +6,7 @@ FILTER_OBJ = ImageFilterNearest.o ImageFilterBilinear.o ImageFilterPixelShaderBa
 OBJS     = $(MAIN_OBJ) $(CAPT_OBJ) $(CONF_OBJ) $(FILTER_OBJ)
 LIBS     = -ld3d9 -ldinput -ldxguid -lwinmm -lvfw32 -lusb0_$(ARCH) -Wl,-Bstatic -lpthread -static-libgcc -static-libstdc++
 #LANGUAGE =  LANG_JA
-LANGUAGE =  LANG_EN
+#LANGUAGE =  LANG_EN
 CFLAGS   = -O2 -Wall -g -DWINVER=0x0500 -DUNICODE -DLANGUAGE=$(LANGUAGE)
 LDFLAGS  = -L/usr/local/lib -L./ -mwindows
 RCFLAGS  = -O coff
