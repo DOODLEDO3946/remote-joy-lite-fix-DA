@@ -39,7 +39,7 @@ void ImageFilterPixelShaderBase::set(IDirect3DDevice9* device) {
 	// Set the pixel shader.
 	HRESULT result = NULL;
 
-	if (FAILED(result = device->SetPixelShader(getPixelShaderCache()))) {
+	if (FAILED(result = device->SetPixelShader(getPixelShaderCache().Get()))) {
 		showError(result, NULL);
 		return;
 	}
