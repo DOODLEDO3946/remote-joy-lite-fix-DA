@@ -25,7 +25,7 @@ bool AkindD3D::initialize() {
 
 void AkindD3D::exit() {
 	release();
-	object = NULL;
+	object.Reset();
 }
 
 bool AkindD3D::create(bool fullScreen) {
@@ -77,10 +77,10 @@ void AkindD3D::release() {
 		(*it)();
 	}
 
-	device = NULL;
+	device.Reset();
 }
 
-IDirect3DDevice9 *AkindD3D::getDevice( void ) const {
+Microsoft::WRL::ComPtr<IDirect3DDevice9> *AkindD3D::getDevice( void ) const {
 	return device;
 }
 
