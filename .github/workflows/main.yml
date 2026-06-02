@@ -1,35 +1,36 @@
-name: Build Remote Joy Lite
+name: Build PC package
 
 on: [ push, pull_request, workflow_dispatch ]
 
-# written referencing Kethen/RemoteJoyLite fork
+# written referencing Kethen's RemoteJoyLite fork
 
 jobs:
   build_pkg:
-    runs-on: windows-latest
+    runs-on: ubuntu-22.04
     steps:
 
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup NuGet.exe for use with actions
-      # You may pin to the exact commit or the version.
-      # uses: NuGet/setup-nuget@fd55a6f3b34392fa83fde1454582407d8c714123
-      uses: NuGet/setup-nuget@v4.0
-      with:
-        # NuGet version to install. Can be `latest`, `preview`, a concrete version like `5.3.1`, or a semver range specifier like `5.x`.
-        nuget-version: # optional, default is latest
-        # NuGet API Key to configure.
-        nuget-api-key: # optional
-        # Source to scope the NuGet API Key to.
-        nuget-api-key-source: # optional
-
-    - name: Install Windows SDK, WDK and libusb-win32
+    - name: Set env vars
       run: |
-        dotnet add package Microsoft.Windows.SDK.BuildTools
-        dotnet add package Microsoft.Windows.WDK.x64
-        dotnet add package libusb-win32-driver
-    
+        echo "sha_name=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
+        echo "PSPDEV=${GITHUB_WORKSPACE}/pspdev" >> $GITHUB_ENV
+        echo "${GITHUB_WORKSPACE}/pspdev/bin:${GITHUB_WORKSPACE}/llvm-mingw-20241217-ucrt-ubuntu-20.04-x86_64/bin" >> $GITHUB_PATH
+
+    - name: Install packages
+      run: |
+        sudo apt update
+        sudo apt install -y make xz-utils gcc
+
+    - name: Download PSP SDK
+      run: |
+        curl -sL https://github.com/pspdev/pspdev/releases/download/v20240701/pspdev-ubuntu-latest-x86_64.tar.gz | tar xvz -C ./
+
+    - name: Download llvm-mingw-w64
+      run: |
+        curl -sL https://github.com/mstorsjo/llvm-mingw/releases/download/20241217/llvm-mingw-20241217-ucrt-ubuntu-20.04-x86_64.tar.xz | xz -d | tar -C ./ -xv
+
     - name: Build PSP
       run: |
         mkdir psp
@@ -40,6 +41,7 @@ jobs:
         make RELEASE=1
         mv RemoteJoyLite.prx ../psp/RemoteJoyLite.prx
         cd ..
+
     - name: Build PC 32 bit JA
       run: |
         mkdir x86
@@ -49,6 +51,7 @@ jobs:
         cp libusb0_x86.dll ../x86/libusb0.dll
         make clean
         cd ..
+
     - name: Build PC 32 bit EN
       run: |
         cd RemoteJoyLite_pc
@@ -56,6 +59,7 @@ jobs:
         mv RemoteJoyLite.exe ../x86/RemoteJoyLite_EN_32.exe
         make clean
         cd ..
+
     - name: Build PC 64 bit JA
       run: |
         mkdir x64
@@ -65,6 +69,7 @@ jobs:
         cp libusb0_x64.dll ../x64/libusb0.dll
         make clean
         cd ..
+
     - name: Build PC 64 bit EN
       run: |
         cd RemoteJoyLite_pc
@@ -72,6 +77,7 @@ jobs:
         mv RemoteJoyLite.exe ../x64/RemoteJoyLite_EN_64.exe
         make clean
         cd ..
+
     - name: Build PC aarch64 JA
       run: |
         mkdir aarch64
@@ -81,6 +87,7 @@ jobs:
         cp libusb0_aarch64.dll ../aarch64/libusb0.dll
         make clean
         cd ..
+
     - name: Build PC aarch64 EN
       run: |
         cd RemoteJoyLite_pc
