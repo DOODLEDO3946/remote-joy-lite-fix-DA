@@ -1,5 +1,5 @@
 #include <d3dx9.h>
-#include "DxErr/src/dxerr.h"
+#include <comdef.h>
 #include "ImageFilterPixelShaderBase.h"
 
 static void showError(HRESULT result, const char* message) {

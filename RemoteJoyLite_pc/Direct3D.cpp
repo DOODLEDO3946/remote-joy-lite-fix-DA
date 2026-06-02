@@ -3,7 +3,7 @@
 /*------------------------------------------------------------------------------*/
 #include <windows.h>
 #include <d3d9.h>
-#include "DxErr/src/dxerr.h"
+#include <comdef.h>
 #include "Direct3D.h"
 #include "Log.h"
 

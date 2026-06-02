@@ -2,7 +2,7 @@
 #include <wrl/client.h>
 #include <d3d9.h>
 #include <d3dx9.h>
-#include "DxErr/src/dxerr.h"
+#include <comdef.h>
 #include "ImageFilterSpline36.h"
 
 extern const char* PIXEL_SHADER_SPLINE36;

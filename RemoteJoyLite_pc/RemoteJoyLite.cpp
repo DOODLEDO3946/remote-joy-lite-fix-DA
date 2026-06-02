@@ -16,7 +16,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <dinput.h>
-#include "DxErr/src/dxerr.h"
+#include <comdef.h>
 
 #include "lusb0_usb.h"
 
