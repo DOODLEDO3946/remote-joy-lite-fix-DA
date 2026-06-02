@@ -6,7 +6,7 @@
 #include <vector>
 #include <windows.h>
 #include <d3d9.h>
-#include <atlbase.h>
+// #include <atlbase.h>
 
 class AkindD3D;
 typedef BOOL (*CREATE_EVENT_HANDLER)(AkindD3D *pAkindD3D);
