@@ -1,7 +1,6 @@
 #ifndef IMAGE_FILTER_LANCZOS4_H
 #define IMAGE_FILTER_LANCZOS4_H
 
-// #include <atlbase.h>
 #include <wrl/client.h>
 #include "ImageFilterPixelShaderBase.h"
 
