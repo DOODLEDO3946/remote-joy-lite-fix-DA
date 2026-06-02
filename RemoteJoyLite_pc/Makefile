@@ -4,8 +4,9 @@ MAIN_OBJ = WinMain.o RemoteJoyLite.res RemoteJoyLite.o Direct3D.o DirectInput.o 
 CAPT_OBJ = Bitmap.o Movie.o Wave.o Macro.o
 CONF_OBJ = Setting.o Setting_Joy.o Setting_Key.o Setting_Etc.o Setting_Filt.o Setting_Capt.o Setting_PSP.o Setting_Macro.o
 FILTER_OBJ = ImageFilterNearest.o ImageFilterBilinear.o ImageFilterPixelShaderBase.o ImageFilterSpline36.o Spline36.o ImageFilterLanczos4.o lanczos4.o
+DXERR_OBJ = dxerr.o
 
-OBJS     = $(MAIN_OBJ) $(CAPT_OBJ) $(CONF_OBJ) $(FILTER_OBJ)
+OBJS     = $(MAIN_OBJ) $(CAPT_OBJ) $(CONF_OBJ) $(FILTER_OBJ) $(DXERR_OBJ)
 LIBS     = -ld3d9 -ldinput -ldxguid -lwinmm -lvfw32 -lusb0_$(ARCH) -Wl,-Bstatic -lpthread -static-libgcc -static-libstdc++
 #LANGUAGE =  LANG_JA
 #LANGUAGE =  LANG_EN
