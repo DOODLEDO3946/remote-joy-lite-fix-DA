@@ -102,7 +102,7 @@ BOOL DebugFontInit( AkindD3D *pAkindD3D )
 {
 	HRESULT hRes;
 	D3DLOCKED_RECT lockRect;
-	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice();
+	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice().Get();
 
 	hRes = pD3DDev->CreateTexture( 128, 128, 1, 0, D3DFMT_A8R8G8B8,
 								   D3DPOOL_MANAGED, &pD3DTex, NULL );
@@ -151,7 +151,7 @@ void DebugFontExit( void )
 /*------------------------------------------------------------------------------*/
 void DebugFontDraw( AkindD3D *pAkindD3D )
 {
-	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice();
+	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice().Get();
 
 	pD3DDev->SetTexture( 0, pD3DTex );
 	pD3DDev->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );

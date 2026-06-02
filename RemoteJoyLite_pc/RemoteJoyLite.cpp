@@ -779,7 +779,7 @@ BOOL RemoteJoyLiteInit( AkindD3D *pAkindD3D )
 	RemoteJoyLite_CalcGammaTable();
 	RemoteJoyLite_SetImageFilter();
 
-	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice();
+	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice().Get();
 	if (FAILED(hRes = D3DXCreateTexture(pD3DDev, PSP_SCREEN_W, PSP_SCREEN_H, 1, 0, D3DFMT_A8B8G8R8, D3DPOOL_MANAGED, &pD3DTex))) {
 		Error( 0, hRes );
 		return FALSE;
@@ -830,7 +830,7 @@ void RemoteJoyLiteDraw( AkindD3D *pAkindD3D )
 	}
 
 	if ( work.disp_flag != 0 ){ Trancetexture(); }
-	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice();
+	IDirect3DDevice9 *pD3DDev = pAkindD3D->getDevice().Get();
 	pD3DDev->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_CLAMP);
 	pD3DDev->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
 	pD3DDev->SetTexture( 0, pD3DTex.Get() );
