@@ -126,7 +126,7 @@ int AkindD3D::getCurrentAdapterIndex() const {
 D3DPRESENT_PARAMETERS AkindD3D::getPresentParameters(bool fullScreen) const {
 	D3DPRESENT_PARAMETERS presentParameters = {0};
 	presentParameters.SwapEffect           = D3DSWAPEFFECT_DISCARD;
-	presentParameters.BackBufferCount      = 2;
+	presentParameters.BackBufferCount      = 1;
 	presentParameters.PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 	presentParameters.hDeviceWindow        = hwnd;
 

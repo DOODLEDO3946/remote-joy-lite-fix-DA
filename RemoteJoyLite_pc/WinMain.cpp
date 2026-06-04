@@ -246,25 +246,6 @@ static void MainSync( HWND hWnd )
 		DesRect.top    = (disp_h - calc_h)/2;
 		DesRect.bottom = DesRect.top + calc_h;
 
-		WCHAR buf[256];
-
-		wsprintfW(
-			buf,
-			L"disp=%dx%d\n"
-			L"calc=%dx%d\n"
-			L"Des=(%d,%d,%d,%d)",
-			disp_w,
-			disp_h,
-			calc_w,
-			calc_h,
-			DesRect.left,
-			DesRect.top,
-			DesRect.right,
-			DesRect.bottom
-		);
-
-		MessageBoxW(NULL, buf, L"Aspect Debug", MB_OK);
-
 		hResult = pD3DDev->Present( &SrcRect, &DesRect, NULL, NULL );
 	}
 
@@ -278,12 +259,11 @@ static void MainSync( HWND hWnd )
 				pAkindD3D->reset(false);
 			}
 		}
+	} else if (FAILED(hResult)) {
+		WCHAR buf[64];
+		wsprintfW(buf, L"Present failed: 0x%08X", (unsigned)hResult);
+		MessageBoxW(NULL, buf, L"Present", MB_OK);
 	}
-	// } else if (FAILED(hResult)) {
-	// 	WCHAR buf[64];
-	// 	wsprintfW(buf, L"Present failed: 0x%08X", (unsigned)hResult);
-	// 	MessageBoxW(NULL, buf, L"Present", MB_OK);
-	// }
 
 	pAkindDI->Sync();
 	SettingSync( pAkindDI.get() );
