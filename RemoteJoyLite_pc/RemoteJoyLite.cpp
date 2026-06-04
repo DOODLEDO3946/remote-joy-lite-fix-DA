@@ -877,7 +877,7 @@ void RemoteJoyLiteDraw( AkindD3D *pAkindD3D )
 
 	pD3DDev->DrawIndexedPrimitiveUP( D3DPT_TRIANGLELIST, 0, 4, 2, DispIdx,
 		D3DFMT_INDEX16, DispBuf[work.disp_rot], sizeof(PRIM) );
-}*/
+}
 
 /*------------------------------------------------------------------------------*/
 /* RemoteJoyLiteSync															*/
