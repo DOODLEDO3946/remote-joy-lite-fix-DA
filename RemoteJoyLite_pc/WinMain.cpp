@@ -258,6 +258,10 @@ static void MainSync( HWND hWnd )
 				pAkindD3D->reset(false);
 			}
 		}
+	} else if (FAILED(hResult)) {
+		WCHAR buf[64];
+		wsprintfW(buf, L"Present failed: 0x%08X", (unsigned)hResult);
+		MessageBoxW(NULL, buf, L"Present", MB_OK);
 	}
 
 	pAkindDI->Sync();
