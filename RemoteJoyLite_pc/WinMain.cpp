@@ -260,7 +260,22 @@ static void MainSync( HWND hWnd )
 		}
 	} else if (FAILED(hResult)) {
 		WCHAR buf[64];
-		wsprintfW(buf, L"Present failed: 0x%08X", (unsigned)hResult);
+//		wsprintfW(buf, L"Present failed: 0x%08X", (unsigned)hResult);
+		wsprintfW(
+			buf,
+			L"disp=%dx%d\n"
+			L"calc=%dx%d\n"
+			L"Des=(%d,%d,%d,%d)",
+			disp_w,
+			disp_h,
+			calc_w,
+			calc_h,
+			DesRect.left,
+			DesRect.top,
+			DesRect.right,
+			DesRect.bottom
+		);
+
 		MessageBoxW(NULL, buf, L"Present", MB_OK);
 	}
 
